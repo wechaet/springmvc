@@ -1,0 +1,43 @@
+<!DOCTYPE html >
+<html  xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>User list</title>
+</head>
+<body>
+  	<h3>UserList</h3>
+  	<a href="/addUserPage">Add User</a><br/>
+	<table border="1px" th:width="1000">
+		<thead>
+		<tr>
+			<th>编号</th>
+			<th>姓名</th>
+			<th>年龄</th>
+			<th>地址</th>
+			<td>Delete</td>
+			<td>Update</td>
+		</tr>
+		</thead>
+		<tbody>
+		<tr th:each="e:${userlist}">
+			<td th:text="${e.id}"></td>
+			<td th:text="${e.name}"></td>
+			<td th:text="${e.age}"></td>
+			<td th:text="${e.address}"></td>
+			<td><a th:href="@{/deleteUser?(id=${e.id})}">Delete</a></td>
+			<td><a th:href="@{/updateUserUI?(id=${e.id})}">Update</a></td>
+		</tr>
+		</tbody>
+		<!--<tbody>
+		<tr th:each="e,eState:${emps}">
+			<td th:text="${eState.index+1}"></td>
+			<td th:text="${e.name}"></td>
+			<td th:text="${e.age}"></td>
+			<td>删除/修改</td>
+		</tr>
+		</tbody>-->
+	</table>
+
+</body>
+</html>
